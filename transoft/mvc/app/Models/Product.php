@@ -14,7 +14,7 @@ class Product extends Model
     /**
      * Product constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->tableName = 'products';
         $this->idColumn = 'id';

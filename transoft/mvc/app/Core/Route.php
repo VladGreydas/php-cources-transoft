@@ -28,7 +28,7 @@ class Route
      */
     public static function getBasePath()
     {
-        $basePath = substr(ROOT, strlen($_SERVER['DOCUMENT_ROOT']));
+        $basePath = mb_substr(ROOT, strlen($_SERVER['DOCUMENT_ROOT']));
         if (DS !== '/') {
             $basePath = str_replace(DS, '/', $basePath);
         }
@@ -74,5 +74,4 @@ class Route
     {
         return self::$controller;
     }
-
 }

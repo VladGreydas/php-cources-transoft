@@ -42,7 +42,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Півкач','Михайло','+380501111111','mykhailo.pivkach@transoftgroup.com','Мукачево','3fc0a7acf087f549ac2b266baf94b8b1',1),(2,'test','test','123','test@gmail.com','test','e20b5cdd013d652e5218da9ca0029c0a',0),(3,'testtest','testdtest','0313137862','testtest@gmail.com','Mukachevo','e6c1ef25b5bcaaacc285489eae10d5e1',0),(4,'www','tttt','654605465465','www@tt.com','Mukachevo','3ade3fd6e8eef84f2ea91f6474be10d9',0),(5,'tttwww','tttwww','564545','eee@ttt.com','3fc0a7acf087f549ac2b266baf94b8b1','eeee',0);
+INSERT INTO `customer` VALUES (1,'Гойда','Владислав','+380111111111','goyda2000@transoftgroup.com','Мукачево','3fc0a7acf087f549ac2b266baf94b8b1',1),(2,'test','test','123','test@gmail.com','test','e20b5cdd013d652e5218da9ca0029c0a',0),(3,'testtest','testdtest','0313137862','testtest@gmail.com','Mukachevo','e6c1ef25b5bcaaacc285489eae10d5e1',0),(4,'www','tttt','654605465465','www@tt.com','Mukachevo','3ade3fd6e8eef84f2ea91f6474be10d9',0),(5,'tttwww','tttwww','564545','eee@ttt.com','3fc0a7acf087f549ac2b266baf94b8b1','eeee',0);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 

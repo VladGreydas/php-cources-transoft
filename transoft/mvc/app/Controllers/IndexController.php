@@ -11,7 +11,6 @@ use Core\Controller;
  */
 class IndexController extends Controller
 {
-
     /**
      * Main page action
      *
@@ -30,5 +29,4 @@ class IndexController extends Controller
     {
         echo "hello from testAction";
     }
-
 }

@@ -9,7 +9,6 @@ namespace Core;
  */
 abstract class Model implements DbModelInterface
 {
-
     /**
      * @var string
      */
@@ -43,7 +42,7 @@ abstract class Model implements DbModelInterface
     /**
      * @return $this
      */
-    public function initCollection()
+    public function initCollection(): Model
     {
         $columns = implode(',', $this->getColumns());
         $this->sql = "select $columns from " . $this->getTableName();
@@ -54,7 +53,7 @@ abstract class Model implements DbModelInterface
     /**
      * @return array
      */
-    public function getColumns()
+    public function getColumns(): array
     {
         $db = new DB();
         $sql = "show columns from {$this->getTableName()};";
@@ -69,32 +68,34 @@ abstract class Model implements DbModelInterface
      * @param $params
      * @return $this
      */
-    public function sort($params)
+    public function sort($params): Model
     {
-        /*
-          TODO
-          return $this;
-         */
+        $this->sql .= " ORDER BY";
+        foreach ($params as $key => $value) {
+            $this->sql .= " " . $key . ' ' . $value . ",";
+        }
         return $this;
     }
 
     /**
      * @param $params
+     * @return Model
      */
-    public function filter($params)
+    public function filter($params): Model
     {
-        /*
-          TODO
-         */
+        $this->sql .= "WHERE " . $params[0] . " = " . $params[1];
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function getCollection()
+    public function getCollection(): Model
     {
         $db = new DB();
+        if ($this->sql[strlen($this->sql) - 1] === ',') {
+            $this->sql = substr($this->sql, 0, -1);
+        }
         $this->sql .= ";";
         $this->collection = $db->query($this->sql, $this->params);
         return $this;
@@ -120,7 +121,7 @@ abstract class Model implements DbModelInterface
      * @param int $id
      * @return array|null
      */
-    public function getItem($id): ?array
+    public function getItem(int $id): ?array
     {
         $sql = "select * from {$this->getTableName()} where $this->idColumn = ?;";
         $db = new DB();
@@ -131,7 +132,7 @@ abstract class Model implements DbModelInterface
     /**
      * @return array
      */
-    public function getPostValues()
+    public function getPostValues(): array
     {
         $values = [];
         $columns = $this->getColumns();
@@ -140,7 +141,7 @@ abstract class Model implements DbModelInterface
               if ( isset($_POST[$column]) && $column !== $this->id_column ) {
               $values[$column] = $_POST[$column];
               }
-             * 
+             *
              */
             $column_value = filter_input(INPUT_POST, $column);
             if ($column_value && $column !== $this->idColumn) {
@@ -167,5 +168,4 @@ abstract class Model implements DbModelInterface
     {
         return 1;
     }
-
 }

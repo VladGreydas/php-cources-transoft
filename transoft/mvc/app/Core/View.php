@@ -1,18 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Core;
 
 class View
 {
-
     /** @var array */
     private $data;
-
-    /** @var string */
+/** @var string */
     private $viewPath;
-
-    /**
+/**
      * @param array       $data
      * @param string|null $viewPath
      */
@@ -53,16 +51,15 @@ class View
         }
 
         // render partial view data.
-        array_walk($this->data, static function(&$item, $key) {
+        array_walk($this->data, static function (&$item, $key) {
+
             if ($item instanceof View) {
                 $item = $item->render();
             }
         });
         extract($this->data, EXTR_SKIP);
         ob_start();
-
         include $path;
-
         return ob_get_clean();
     }
 
@@ -78,14 +75,14 @@ class View
         return file_exists($path) ? $path : $path404;
     }
 
-     private function getBP(): string
-     {
-         return Route::getBP();
-     }
+    private function getBP(): string
+    {
+        return Route::getBP();
+    }
 
-     public function getBlock(string $name): View
-     {
-         $path = self::getViewDir() . DS . $name . '.php';
-         return new View($this->getData(), $path);
-     }
+    public function getBlock(string $name): View
+    {
+        $path = self::getViewDir() . DS . $name . '.php';
+        return new View($this->getData(), $path);
+    }
 }

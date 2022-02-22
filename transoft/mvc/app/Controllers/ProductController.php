@@ -12,10 +12,9 @@ use Core\View;
  */
 class ProductController extends Controller
 {
-
     /**
      * Product index action that shows product list
-     * 
+     *
      * @return void
      */
     public function indexAction(): void
@@ -25,7 +24,7 @@ class ProductController extends Controller
 
     /**
      * Product list action
-     * 
+     *
      * @return void
      */
     public function listAction(): void
@@ -44,7 +43,7 @@ class ProductController extends Controller
 
     /**
      * Single product view action
-     * 
+     *
      * @return void
      */
     public function viewAction(): void
@@ -63,7 +62,7 @@ class ProductController extends Controller
 
     /**
      * Shows product editing page
-     * 
+     *
      * @return void
      */
     public function editAction(): void
@@ -84,7 +83,7 @@ class ProductController extends Controller
 
     /**
      * Shows product add page
-     * 
+     *
      * @return void
      */
     public function addAction(): void
@@ -124,27 +123,10 @@ class ProductController extends Controller
      */
     public function getSortParams_old(): array
     {
-        /*
-          if (isset($_GET['sort'])) {
-          $sort = $_GET['sort'];
-          } else
-          {
-          $sort = "name";
-          }
-         * 
-         */
         $sort = filter_input(INPUT_GET, 'sort');
         if (!isset($sort)) {
             $sort = "name";
         }
-        /*
-          if (isset($_GET['order']) && $_GET['order'] == 1) {
-          $order = "ASC";
-          } else {
-          $order = "DESC";
-          }
-         * 
-         */
         if ((int) filter_input(INPUT_GET, 'order') === 1) {
             $order = "DESC";
         } else {
@@ -159,15 +141,6 @@ class ProductController extends Controller
      */
     public function getId()
     {
-        /*
-          if (isset($_GET['id'])) {
-
-          return $_GET['id'];
-          } else {
-          return NULL;
-          }
-         */
         return filter_input(INPUT_GET, 'id');
     }
-
 }

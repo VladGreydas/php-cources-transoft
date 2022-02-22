@@ -1,4 +1,5 @@
 <?php
+
 define('ROOT', getcwd());
-define('DS', DIRECTORY_SEPARATOR);
+const DS = DIRECTORY_SEPARATOR;
 include ROOT . '/app/bootstrap.php';
